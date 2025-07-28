@@ -6,20 +6,27 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/24 16:07:36 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/28 10:48:18 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int	check_sorted;
+
 int	main(int argc, char *argv[])
 {
-	char *test;
-	test = argv[1];
+	char	*test;
 
+	test = argv[1];
 	if (argc == 2)
 	{
 		printf("%s \n", argv[1]);
 		ft_printf("ft_printf");
 	}
 }
+// parsing
+// check if input makes sense
+// check if numbers
+// if something other than number error message
+// if numbers then check if already sorted

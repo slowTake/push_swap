@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/28 09:59:21 by pnurmi           ###   ########.fr       */
+/*   Created: 2025/07/28 09:37:51 by pnurmi            #+#    #+#             */
+/*   Updated: 2025/07/28 09:50:21 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include "libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-
-typedef struct s_node
+void	clean_exit(char **stuff)
 {
-	int				value;
-	int				index;
-	struct s_node	*next;
-	struct s_node	*prev;
-}					t_node;
-
-#endif
+	// clean stacks
+	// clean memory
+	exit(0);
+}
