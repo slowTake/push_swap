@@ -6,13 +6,13 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:03:00 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/28 10:24:53 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/28 13:48:32 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_node	*ft_lstnew(int value)
+t_node	*ft_listnew(int value)
 {
 	t_node	*new_node;
 
@@ -26,66 +26,66 @@ t_node	*ft_lstnew(int value)
 	return (new_node);
 }
 
-void	ft_lstadd_back(t_node **lst, t_node *new_node)
+void	ft_listadd_back(t_node **list, t_node *new_node)
 {
 	t_node	*current;
 
-	if (!lst || !new_node)
+	if (!list || !new_node)
 		return ;
-	if (*lst)
+	if (*list)
 	{
-		*lst = new_node;
+		*list = new_node;
 		return ;
 	}
-	current = *lst;
+	current = *list;
 	while (current->next)
 		current = current->next;
 	current->next = new_node;
 	new_node->prev = current;
 }
 
-void	ft_lst_front(t_node **lst, t_node *new_node)
+void	ft_list_front(t_node **list, t_node *new_node)
 {
-	if (!lst || !new_node)
+	if (!list || !new_node)
 		return ;
-	if (*lst)
-		(*lst)->prev = new_node;
-	new_node->next = *lst;
-	*lst = new_node;
+	if (*list)
+		(*list)->prev = new_node;
+	new_node->next = *list;
+	*list = new_node;
 }
 
-int	ft_lstsize(t_node *lst)
+int	ft_listsize(t_node *list)
 {
 	int	count;
 
 	count = 0;
-	while (lst)
+	while (list)
 	{
 		count++;
-		lst = lst->next;
+		list = list->next;
 	}
 	return (count);
 }
 
-void	ft_lst_remove(t_node *node)
+void	ft_list_remove(t_node *node)
 {
 	if (node)
 		free(node);
 }
 
-void	ft_cleanlst(t_node **lst)
+void	ft_cleanlist(t_node **list)
 {
 	t_node	*current;
 	t_node	*temp;
 
-	if (!lst)
+	if (!list)
 		return ;
-	current = *lst;
+	current = *list;
 	while (current)
 	{
 		temp = current->next;
-		ft_lst_remove(current);
+		ft_list_remove(current);
 		current = temp;
 	}
-	*lst = NULL;
+	*list = NULL;
 }

@@ -6,11 +6,11 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/28 10:48:18 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/28 12:36:45 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
 int	check_sorted;
 
@@ -27,6 +27,8 @@ int	main(int argc, char *argv[])
 }
 // parsing
 // check if input makes sense
-// check if numbers
+// check if digit
+// if duplicate
+// signed ints
 // if something other than number error message
 // if numbers then check if already sorted

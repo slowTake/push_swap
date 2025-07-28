@@ -1,36 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/28 15:26:19 by pnurmi           ###   ########.fr       */
+/*   Created: 2025/07/28 13:35:34 by pnurmi            #+#    #+#             */
+/*   Updated: 2025/07/28 14:13:52 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_parse(char *str)
+int	ft_isduplicate(t_node *head, int value)
 {
-	int	i;
+	t_node	*current;
 
-	i = 0;
-	if (ft_isvalid(ft_atoi(str[i])) == 0)
+	current = head;
+	while (current)
 	{
-		prinf("Please enter a valid input");
-		ft_cleanlist(*str);
+		if (current->value == value)
+			return (1);
+		current = current->next;
 	}
+	return (0);
 }
 
-t_node	*parse_arg(int argc, char **argv)
+int	ft_isvalid(int str)
 {
-	t_node *stack_a = NULL;
-	long num;
-	int i;
-
-	i = 1;
-
-	while (i < argc)
+	while (str)
+	{
+		if (ft_isascii(str) == 0)
+			return (0);
+		if (ft_isdigit == 0)
+		{
+			error_not_number();
+			return (0);
+		}
+		if (ft_isduplicate == 1)
+		{
+			error_duplicate();
+			return (0);
+		}
+	}
+	return (1)
 }
