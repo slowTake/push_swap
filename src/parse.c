@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/30 15:40:30 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/30 15:50:14 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ int	ft_parse(char *str)
 t_node	*parse_arg(int argc, char **argv)
 {
 	t_node	*stack_a;
-	long	num;
-	char	array;
 	int		i;
 
 	stack_a = NULL;
@@ -39,8 +37,15 @@ t_node	*parse_arg(int argc, char **argv)
 			error_and_exit();
 		while (argv[1])
 		{
-			ft_listadd_back(&stack_a, ft_listnew());
+			ft_listadd_back(&stack_a, ft_listnew(argv[1][i]));
+			if (!stack_a)
+			{
+				ft_putstr_fd("Error: Mem fail\n", 2);
+				return (NULL);
+			}
+			i++;
 		}
+		return (stack_a);
 	}
 	else
 		error_and_exit();
