@@ -6,13 +6,13 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 13:35:34 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/28 14:13:52 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/30 15:37:48 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_isduplicate(t_node *head, int value)
+bool	ft_isduplicate(t_node *head, int value)
 {
 	t_node	*current;
 
@@ -20,28 +20,26 @@ int	ft_isduplicate(t_node *head, int value)
 	while (current)
 	{
 		if (current->value == value)
-			return (1);
+			return (true);
 		current = current->next;
 	}
-	return (0);
+	return (false);
 }
 
-int	ft_isvalid(int str)
+bool	ft_isvalid(int str)
 {
 	while (str)
 	{
-		if (ft_isascii(str) == 0)
-			return (0);
 		if (ft_isdigit == 0)
 		{
 			error_not_number();
-			return (0);
+			return (false);
 		}
-		if (ft_isduplicate == 1)
+		if (ft_isduplicate == true)
 		{
 			error_duplicate();
-			return (0);
+			return (false);
 		}
 	}
-	return (1)
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:03:00 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/28 13:48:32 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/30 13:51:24 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_list_remove(t_node *node)
 		free(node);
 }
 
-void	ft_cleanlist(t_node **list)
+void	ft_clearlist(t_node **list)
 {
 	t_node	*current;
 	t_node	*temp;

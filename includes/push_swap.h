@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/28 09:59:21 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/30 13:16:08 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+# include <ctype.h>
+# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
 
