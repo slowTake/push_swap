@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 13:56:40 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 15:44:15 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	main(int argc, char *argv[])
 	i = 1;
 	while (i < argc)
 	{
-		printf("Checking arg: '%s'\n", argv[i]);
 		if (!check_arg(argv[i]))
 			error_and_exit();
 		i++;
