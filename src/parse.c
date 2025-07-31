@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 12:24:22 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:52:18 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,14 @@ int	check_arg(const char *str)
 	i = 0;
 	if (!str || !*str)
 		return (0);
-	while (str[i])
-	{
-		while (str[i] == ' ')
-			i++;
-		if (str[i] == '-' || str[i] == '+')
-			i++;
-		if (!ft_isdigit(str[i]))
-			return (0);
-		while (ft_isdigit(str[i]))
-			i++;
-		if (str[i] && str[i] != ' ')
-			return (0);
-	}
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!ft_isdigit(str[i]))
+		return (0);
+	while (ft_isdigit(str[i]))
+		i++;
+	if (str[i] != '\0')
+		return (0);
 	return (1);
 }
 

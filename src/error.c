@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 16:13:49 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 10:05:21 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 12:48:11 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	error_duplicate(void)
 }
 void	error_and_exit(void)
 {
-	ft_putstr_fd("Error/n", 2);
+	ft_putstr_fd("Error", 2);
 	exit(EXIT_FAILURE);
 }

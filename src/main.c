@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 11:24:50 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 13:56:40 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,29 @@
 int	main(int argc, char *argv[])
 {
 	t_node	*stack_a;
+	t_node	*tmp;
+	int		i;
 
-	if (argc < 2)
+	if (argc <= 1)
 		error_and_exit();
-	check_arg(*argv);
+	i = 1;
+	while (i < argc)
+	{
+		printf("Checking arg: '%s'\n", argv[i]);
+		if (!check_arg(argv[i]))
+			error_and_exit();
+		i++;
+	}
 	stack_a = parse_arg(argc, argv);
+	tmp = stack_a;
+	while (tmp)
+	{
+		printf("%d\n", tmp->value);
+		tmp = tmp->next;
+	}
 	if (check_sorted(stack_a))
 	{
-		//
-		// error_and_exit;
+		// already sorted
 	}
 }
 // parsing
