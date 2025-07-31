@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:03:00 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/30 13:51:24 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 12:27:51 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_node	*ft_listnew(int value)
 	t_node	*new_node;
 
 	new_node = (t_node *)malloc(sizeof(t_node));
-	if (new_node)
+	if (!new_node)
 		return (NULL);
 	new_node->value = value;
 	new_node->index = -1;
@@ -32,7 +32,7 @@ void	ft_listadd_back(t_node **list, t_node *new_node)
 
 	if (!list || !new_node)
 		return ;
-	if (*list)
+	if (*list == NULL)
 	{
 		*list = new_node;
 		return ;
