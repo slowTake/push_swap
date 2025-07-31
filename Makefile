@@ -1,8 +1,13 @@
 # --- Project Specifics ---
 NAME = push_swap
 # Pipex source files
-SRCS = src/main.c \
-        src/parse.c
+SRCS = src/checks.c \
+        src/error.c \
+		src/list_man.c \
+		src/main.c \
+		src/moves.c \
+		src/parse.c \
+		src/utils.c
 
 # Object directory for all object files (pipex and libft)
 OBJ_DIR = .objs

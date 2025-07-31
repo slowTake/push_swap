@@ -6,23 +6,23 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/30 12:46:46 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 10:52:35 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_sorted;
-
 int	main(int argc, char *argv[])
 {
-	char	*test;
+	t_node	*stack_a;
 
-	test = argv[1];
-	if (argc == 2)
+	if (argc < 2)
+		error_and_exit;
+	check_arg(argv);
+	stack_a = parse_args(argc, argv);
+	if (check_sorted(stack_a))
 	{
-		printf("%s \n", argv[1]);
-		ft_printf("ft_printf");
+		error_and_exit;
 	}
 }
 // parsing

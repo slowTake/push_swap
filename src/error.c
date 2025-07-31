@@ -6,22 +6,22 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 16:13:49 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/30 15:42:19 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 10:05:21 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error_not_number(char **str)
+void	error_not_number(void)
 {
 	ft_putstr_fd("Please enter only numbers", 2);
-	clean_exit();
+	exit(EXIT_FAILURE);
 }
 
-void	error_duplicate(char **str)
+void	error_duplicate(void)
 {
 	ft_putstr_fd("No duplicates pleases", 2);
-	clean_exit();
+	exit(EXIT_FAILURE);
 }
 void	error_and_exit(void)
 {

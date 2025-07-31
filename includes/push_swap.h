@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 09:33:58 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 10:38:40 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,23 @@ typedef struct s_node
 	struct s_node	*next;
 	struct s_node	*prev;
 }					t_node;
+
+// parsing & util
+int					ft_parse(char *str);
+t_node				*parse_arg(char *argv);
+long				ft_atol(const char *str);
+
+// list man
+void				ft_clearlist(t_node **stack);
+void				ft_listadd_back(t_node **stack, t_node *new);
+t_node				*ft_listnew(int value);
+
+// checks & errors
+bool				ft_isduplicate(t_node *head, int value);
+bool				ft_isvalid(int str);
+int					is_int_overflow(const char *str);
+void				error_not_number(void);
+void				error_duplicate(void);
+void				error_and_exit(void);
 
 #endif

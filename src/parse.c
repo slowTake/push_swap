@@ -6,52 +6,57 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 09:42:02 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 11:10:55 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_parse(char *str)
+int	check_arg(const char *str)
 {
 	int	i;
 
 	i = 0;
-	if (ft_isvalid(ft_atoi(str[i])) == 0)
+	if (!str || !*str)
+		return (0);
+	while (str[i])
 	{
-		ft_prinf("Please enter a valid input");
-		ft_clearlist(*str);
+		while (str[i] == ' ')
+			i++;
+		if (str[i] == '-' || str[i] == '+')
+			i++;
+		if (!ft_isdigit(str[i]))
+			return (0);
+		while (ft_isdigit(str[i]))
+			i++;
+		if (str[i] && str[i] != ' ')
+			return (0);
 	}
+	return (1);
 }
 
 t_node	*parse_arg(int argc, char **argv)
 {
 	t_node	*stack_a;
 	int		i;
+	long	num;
 
 	stack_a = NULL;
-	i = 0;
-	if (argc >= 2)
+	i = 1;
+	while (i < argc)
 	{
-		while (ft_isdigt(argv[1]) == 1 && ft_duplicate(argv[1] == false))
+		num = ft_atol(argv[i]);
+		if (num < INT_MIN || num > INT_MAX)
+			error_and_exit;
+		if (ft_isduplicate(stack_a, (int)num))
+			error_duplicate();
+		ft_listadd_back(&stack_a, ft_listnew((int)num));
+		if (!stack_a)
 		{
-			ft_listadd_back(&stack_a, ft_listnew(argv[1][i]));
-			if (!stack_a)
-			{
-				ft_putstr_fd("Error: Mem fail\n", 2);
-				return (NULL);
-			}
-			i++;
+			ft_putstr_fd("Error: Mem fail\n", 2);
+			return (NULL);
 		}
-		return (stack_a);
+		i++;
 	}
-	else
-		error_and_exit();
+	return (stack_a);
 }
-
-// if (argc == 2)
-// {
-// 	array = ft_split(argv[1], " ");
-// 	if (!ft_isvalid())
-// 		ft_clearlist(&stack_a);
-// }
