@@ -6,18 +6,11 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:37:51 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 09:39:29 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 11:26:12 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	clean_exit(char **stuff)
-{
-	// clean stacks
-	// clean memory
-	exit(0);
-}
 
 long	ft_atol(const char *str)
 {

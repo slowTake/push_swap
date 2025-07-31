@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 10:38:40 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/07/31 11:21:48 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ typedef struct s_node
 
 // parsing & util
 int					ft_parse(char *str);
-t_node				*parse_arg(char *argv);
+t_node				*parse_arg(int argc, char **argv);
 long				ft_atol(const char *str);
+int					check_arg(const char *str);
 
 // list man
 void				ft_clearlist(t_node **stack);
@@ -45,5 +46,6 @@ int					is_int_overflow(const char *str);
 void				error_not_number(void);
 void				error_duplicate(void);
 void				error_and_exit(void);
+bool				check_sorted(t_node *stack);
 
 #endif
