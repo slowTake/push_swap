@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 15:44:15 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/01 09:31:14 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,5 @@ int	main(int argc, char *argv[])
 		tmp = tmp->next;
 	}
 	if (check_sorted(stack_a))
-	{
-		// already sorted
-	}
+		ft_printf("sorted!");
 }
-// parsing
-// check if input makes sense
-// check if digit
-// if duplicate
-// signed ints
-// if something other than number error message
-// if numbers then check if already sorted
