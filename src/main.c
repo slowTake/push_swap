@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/04 09:50:56 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/04 13:17:02 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ int	main(int argc, char *argv[])
 	}
 	if (check_sorted(stack_a))
 		ft_printf("sorted!");
+	ft_clearlist(&stack_a);
 }
