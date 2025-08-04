@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:41 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/04 16:32:29 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/04 16:46:19 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,38 @@ void	stack_b_next_bit(t_node **stack_a, t_node **stack_b, int next_bit,
 			pa(stack_a);
 		size--;
 	}
+}
+
+void	sort_stack_a_bits(t_node **stack_a, t_node **stack_b, int bit)
+{
+	int	size;
+
+	size = ft_listsize(stack_a);
+	while (size > 0 && check_sorted(stack_a) != true)
+	{
+		if ((((*stack_a) >> bit) & 1) == 1)
+			move_pb(stack_a, stack_b);
+		else
+			move_ra(stack_a);
+		size--;
+	}
+}
+
+int	count_bit(int size)
+{
+	int	count;
+
+	count = 0;
+	while (size > 1)
+	{
+		size >>= 1;
+		count++;
+	}
+	return (count);
+}
+
+void	radix(t_node **stack_a, t_node **stack_b)
+{
+	int bit;
+	int count;
 }
