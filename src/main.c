@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/01 09:31:14 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/04 09:50:56 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,10 @@ int	main(int argc, char *argv[])
 	t_node	*tmp;
 	int		i;
 
-	if (argc <= 1)
-		error_and_exit();
 	i = 1;
 	while (i < argc)
 	{
-		if (!check_arg(argv[i]))
+		if (!check_arg(argv[i], argc))
 			error_and_exit();
 		i++;
 	}

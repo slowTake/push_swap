@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 13:52:17 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/04 09:51:11 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_node
 int					ft_parse(char *str);
 t_node				*parse_arg(int argc, char **argv);
 long				ft_atol(const char *str);
-int					check_arg(const char *str);
+int					check_arg(const char *str, int argc);
 
 // list man
 void				ft_clearlist(t_node **stack);

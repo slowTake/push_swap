@@ -1,96 +1,71 @@
-# --- Project Specifics ---
-NAME = push_swap
-# Pipex source files
-SRCS = src/checks.c \
-        src/error.c \
-		src/list_man.c \
-		src/main.c \
-		src/moves.c \
-		src/parse.c \
-		src/utils.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/08/04 12:25:20 by pnurmi            #+#    #+#              #
+#    Updated: 2025/08/04 12:38:46 by pnurmi           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-# Object directory for all object files (pipex and libft)
-OBJ_DIR = .objs
+# DONT FORGET TO CHANGE Makefile!
+# DONT FORGET TO CHANGE Makefile!
+# DONT FORGET TO CHANGE Makefile!
+# DONT FORGET TO CHANGE Makefile!
+# DONT FORGET TO CHANGE Makefile!
+# DONT FORGET TO CHANGE Makefile!
 
-# Pipex object files (will be placed in OBJ_DIR)
-OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
+# Compiler and flags
+CC		:= cc
+CFLAGS	:= -Wall -Wextra -Werror -g -I includes -I libft
 
-# Include paths for pipex sources
-INCLUDES = -I./includes
+# Directories  
+OBJDIR	:= .objs
+LIBDIR	:= libft
 
-# --- LIBFT Specifics ---
-LIBFT_PATH = libft
-LIBFT_SRCS = $(addprefix $(LIBFT_PATH)/, \
-		ft_isalpha.c \
-		ft_isdigit.c \
-		ft_isalnum.c \
-		ft_isascii.c \
-		ft_isprint.c \
-		ft_strlen.c \
-		ft_memset.c \
-		ft_memcpy.c \
-		ft_memmove.c \
-		ft_strlcpy.c \
-		ft_strlcat.c \
-		ft_toupper.c \
-		ft_tolower.c \
-		ft_strchr.c \
-		ft_strrchr.c \
-		ft_strncmp.c \
-		ft_memchr.c \
-		ft_memcmp.c \
-		ft_strnstr.c \
-		ft_atoi.c \
-		ft_calloc.c \
-		ft_strdup.c \
-		ft_substr.c \
-		ft_strjoin.c \
-		ft_strtrim.c \
-		ft_split.c \
-		ft_itoa.c \
-		ft_strmapi.c \
-		ft_striteri.c \
-		ft_putchar_fd.c \
-		ft_putstr_fd.c \
-		ft_putendl_fd.c \
-		ft_putnbr_fd.c \
-		ft_bzero.c \
-		ft_printf.c \
-		ft_printf_utility.c \
-)
+# Executable name
+NAME	:= push_swap
 
-LIBFT_OBJS = $(addprefix $(OBJ_DIR)/, $(notdir $(LIBFT_SRCS:.c=.o)))
+# Source files (automatically finds all .c files in src/ and subdirectories)
+SRC		:= $(shell find src -name "*.c")
 
-LIBFT_INC = -I$(LIBFT_PATH)
+# Object files
+OBJ		:= $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
 
-# --- Compiler & Flags ---
-COMPILER = cc
-COMPILERFLAGS = -Wall -Wextra -Werror -g
+# Libft files (since you're compiling libft sources directly)
+LIBFT_SRC := $(shell find $(LIBDIR) -name "*.c")
+LIBFT_OBJ := $(addprefix $(OBJDIR)/, $(LIBFT_SRC:.c=.o))
 
-# --- Rules ---
+# Colors for pretty output
+GREEN	:= \033[0;32m
+CYAN	:= \033[0;36m
+YELLOW	:= \033[1;33m
+RESET	:= \033[0m
 
+# Default rule
+.DEFAULT_GOAL := all
+
+# Build rules
 all: $(NAME)
 
-$(OBJ_DIR):
-	@mkdir -p $(OBJ_DIR)
+$(NAME): $(OBJ) $(LIBFT_OBJ)
+	@$(CC) $(CFLAGS) -o $@ $^
+	@echo "$(CYAN)🚀 Built: $@$(RESET)"
 
-$(NAME): $(OBJS) $(LIBFT_OBJS)
-	$(COMPILER) $^ -o $(NAME)
-
-$(OBJ_DIR)/%.o: src/%.c | $(OBJ_DIR)
-	$(COMPILER) $(COMPILERFLAGS) $(INCLUDES) $(LIBFT_INC) -c $< -o $@
-
-$(OBJ_DIR)/%.o: $(LIBFT_PATH)/%.c | $(OBJ_DIR)
-	$(COMPILER) $(COMPILERFLAGS) $(LIBFT_INC) -c $< -o $@
+$(OBJDIR)/%.o: %.c
+	@mkdir -p $(@D)
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "$(GREEN)🛠️  Compiled:$(RESET) $<"
 
 clean:
-	# Remove all generated object files (both pipex and libft)
-	@rm -f $(OBJS) $(LIBFT_OBJS)
+	@rm -rf $(OBJDIR)
+	@echo "$(YELLOW)🧹 Cleaned object files.$(RESET)"
 
 fclean: clean
-	# Remove the object directory and the executable
-	@rm -rf $(OBJ_DIR)
 	@rm -f $(NAME)
+	@echo "$(YELLOW)🗑️  Removed binary.$(RESET)"
 
 re: fclean all
 

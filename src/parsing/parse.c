@@ -6,17 +6,19 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/07/31 14:00:37 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/04 09:50:08 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_arg(const char *str)
+int	check_arg(const char *str, int argc)
 {
 	int	i;
 
 	i = 0;
+	if (argc <= 1)
+		error_and_exit();
 	if (!str || !*str)
 		return (0);
 	if (str[i] == '-' || str[i] == '+')
