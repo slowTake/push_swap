@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:12 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/05 11:39:51 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/06 12:36:13 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	*stack_to_array(t_node **stack_a, int size)
 	int		i;
 
 	i = 0;
-	array = (int *)maloc(sizeof(int) * size);
+	array = (int *)malloc(sizeof(int) * size);
 	if (!array)
 		return (NULL);
 	current = *stack_a;

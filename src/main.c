@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/04 13:17:02 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/06 13:15:00 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char *argv[])
 {
 	t_node	*stack_a;
-	t_node	*tmp;
+	int		*sorted_stack;
 	int		i;
 
 	i = 1;
@@ -26,13 +26,19 @@ int	main(int argc, char *argv[])
 		i++;
 	}
 	stack_a = parse_arg(argc, argv);
-	tmp = stack_a;
-	while (tmp)
-	{
-		printf("%d\n", tmp->value);
-		tmp = tmp->next;
-	}
+	sorted_stack = stack_to_array(&stack_a, ft_listsize(stack_a));
+	bubble_sort(sorted_stack, ft_listsize(stack_a));
+	normalize_stack(&stack_a, sorted_stack, ft_listsize(stack_a));
+	free(sorted_stack);
 	if (check_sorted(stack_a))
 		ft_printf("sorted!");
 	ft_clearlist(&stack_a);
 }
+
+// value tester and checker: while, tmp
+// tmp = stack_a;
+// while (tmp)
+// {
+// 	printf("%d\n", tmp->value);
+// 	tmp = tmp->next;
+// }
