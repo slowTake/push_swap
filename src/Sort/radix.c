@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:41 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/06 13:22:19 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/06 15:02:46 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	all_to_a(t_node **stack_a, t_node **stack_b)
 {
 	while (ft_listsize(*stack_b) != 0)
 	{
-		move_pa(stack_b, stack_a);
+		move_pa(stack_a, stack_b);
 	}
 }
 
@@ -41,7 +41,7 @@ void	sort_stack_a_bits(t_node **stack_a, t_node **stack_b, int bit)
 	int	size;
 
 	size = ft_listsize(*stack_a);
-	while (size > 0 && check_sorted(*stack_a) != true)
+	while (size > 0)
 	{
 		if ((((*stack_a)->value >> bit) & 1) == 1)
 			move_pb(stack_a, stack_b);
@@ -51,23 +51,62 @@ void	sort_stack_a_bits(t_node **stack_a, t_node **stack_b, int bit)
 	}
 }
 
-int	count_bit(int size)
+int	ft_max_bit(t_node *stack_a)
 {
-	int	count;
+	int	max_bit;
+	int	stack_size;
 
-	count = 0;
-	while (size > 1)
-	{
-		size >>= 1;
-		count++;
-	}
-	return (count);
+	max_bit = 0;
+	stack_size = ft_listsize(stack_a);
+	while ((1 << max_bit) < stack_size)
+		max_bit++;
+	return (max_bit);
 }
 
-void	radix(t_node **stack_a, t_node **stack_b);
-// {
-// int bit;
-// int count;
+void	radix_logic(t_node **stack_a, t_node **stack_b)
+{
+	int	max_bit;
+	int	bit_pos;
+	int	size;
+	int	i;
 
-// assig
-// }
+	bit_pos = 0;
+	max_bit = ft_max_bit(*stack_a);
+	while (bit_pos < max_bit)
+	{
+		size = ft_listsize(*stack_a);
+		i = 0;
+		while (i < size)
+		{
+			if ((((*stack_a)->index >> bit_pos) & 1) == 1)
+				move_pb(stack_a, stack_b);
+			else
+				move_ra(stack_a);
+			i++;
+		}
+		while (ft_listsize(*stack_b) > 0)
+			move_pa(stack_a, stack_b);
+		bit_pos++;
+	}
+}
+
+void	radix_sort(t_node **stack_a, t_node **stack_b)
+{
+	int	size;
+	int	*array;
+	int	*sorted_array;
+
+	size = ft_listsize(*stack_a);
+	array = stack_to_array(stack_a, size);
+	if (!array)
+		return ;
+	sorted_array = (int *)malloc(sizeof(int) * size);
+	if (!sorted_array)
+	{
+		free(array);
+		return ;
+	}
+	bubble_sort(sorted_array, size);
+	normalize_stack(stack_a, sorted_array, size);
+	radix_logic(stack_a, stack_b);
+}

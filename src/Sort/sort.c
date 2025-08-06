@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:12 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/06 12:36:13 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/06 15:01:47 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	bubble_sort(int *array, int size)
 	i = 0;
 	while (i < size - 1)
 	{
-		j = i;
-		while (j < size - 1)
+		j = 0;
+		while (j < size - i - 1)
 		{
 			if (array[j] > array[j + 1])
 			{
@@ -63,7 +63,7 @@ void	normalize_stack(t_node **stack, int *sorted_array, int size)
 	int		i;
 
 	current = *stack;
-	while (*stack != NULL)
+	while (current != NULL)
 	{
 		i = 0;
 		while (i < size)
