@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:41 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/04 16:46:19 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/06 09:21:35 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	sort_stack_a_bits(t_node **stack_a, t_node **stack_b, int bit)
 	size = ft_listsize(stack_a);
 	while (size > 0 && check_sorted(stack_a) != true)
 	{
-		if ((((*stack_a) >> bit) & 1) == 1)
+		if ((((*stack_a)->value >> bit) & 1) == 1)
 			move_pb(stack_a, stack_b);
 		else
 			move_ra(stack_a);

@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:12 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/04 17:30:44 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/05 11:39:51 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	bubble_sort(int *array, int size)
 	}
 }
 
-int	*stack_array(t_node **stack_a, int size)
+int	*stack_to_array(t_node **stack_a, int size)
 {
 	int		*array;
 	t_node	*current;
