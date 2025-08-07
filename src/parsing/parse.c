@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/07 10:02:58 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/07 10:34:10 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_node	*parse_arg(int argc, char **argv)
 	return (stack_a);
 }
 
-int	ft_swap(t_node **stack_a, t_node **stack_b, int size)
+void	execute_sort(t_node **stack_a, t_node **stack_b, int size)
 {
 	int	*sorted_stack;
 
@@ -68,33 +68,12 @@ int	ft_swap(t_node **stack_a, t_node **stack_b, int size)
 		return ;
 	sorted_stack = stack_to_array(stack_a, size);
 	if (!sorted_stack)
-		error_and_exit;
+		error_and_exit();
 	bubble_sort(sorted_stack, size);
+	normalize_stack(stack_a, sorted_stack, size);
 	free(sorted_stack);
-	if (size <= 5)
-		sort_5();
-	else
-		radix_sort(&stack_a, &stack_b);
-}
-
-int	main(int argc, char **argv)
-{
-	t_node *stack_a;
-	t_node *stack_b;
-	int i = 0;
-
-	stack_a = NULL;
-	stack_b = NULL;
-
-	i = 1;
-	if (argc < 2)
-		return (0);
-	while (i < argc)
-	{
-		if (!check_arg(argv[i], argc))
-			error_and_exit();
-		i++;
-	}
-	stack_a = parse_arg(argc, argv);
-	ft_swap(&stack_a, &stack_b, ft_listsize(stack_a));
+	// if (size <= 5)
+	// 	sort_5();
+	// else
+	radix_sort(stack_a, stack_b);
 }
