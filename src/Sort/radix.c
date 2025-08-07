@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:41 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/07 10:11:27 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/07 13:16:02 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,19 +94,13 @@ void	radix_sort(t_node **stack_a, t_node **stack_b)
 {
 	int	size;
 	int	*array;
-	int	*sorted_array;
 
 	size = ft_listsize(*stack_a);
 	array = stack_to_array(stack_a, size);
 	if (!array)
 		return ;
-	sorted_array = (int *)malloc(sizeof(int) * size);
-	if (!sorted_array)
-	{
-		free(array);
-		return ;
-	}
-	bubble_sort(sorted_array, size);
-	normalize_stack(stack_a, sorted_array, size);
+	bubble_sort(array, size);
+	normalize_stack(stack_a, array, size);
+	free(array);
 	radix_logic(stack_a, stack_b);
 }
