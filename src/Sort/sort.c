@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:12 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/07 13:16:03 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/07 16:19:11 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,44 @@ void	normalize_stack(t_node **stack, int *sorted_array, int size)
 	}
 }
 
-// void	sort_5(void)
+// void	sort_5(t_node **stack_a, t_node **stack_b)
 // {
-// 	// placeholder
+// 	int smallesst
 // }
+
+void	sort_3(t_node **stack_a)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = (*stack_a)->index;
+	b = (*stack_a)->next->index;
+	c = (*stack_a)->next->next->index;
+	if (a > b && b < c && a < c)
+		move_sa(stack_a);
+	else if (a < b && b > a && a > c)
+		move_rra(stack_a);
+	else if (a > b && b > c)
+	{
+		move_sa(stack_a);
+		move_rra(stack_a);
+	}
+	else if (a < b && b > c && a < c)
+	{
+		move_ra(stack_a);
+		move_sa(stack_a);
+		move_rra(stack_a);
+	}
+	else if (a > b && b < c && a > c)
+	{
+		move_sa(stack_a);
+		move_ra(stack_a);
+	}
+}
+
+void	sort_2(t_node **stack_a)
+{
+	if ((*stack_a)->value > (*stack_a)->next->value)
+		move_sa(stack_a);
+}

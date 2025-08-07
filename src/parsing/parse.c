@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/07 12:59:22 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/07 16:20:16 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ void	execute_sort(t_node **stack_a, t_node **stack_b, int size)
 	normalize_stack(stack_a, sorted_stack, size);
 	free(sorted_stack);
 	// if (size <= 5)
-	// 	sort_5();
-	// else
-	radix_sort(stack_a, stack_b);
+	// 	sort_5(stack_a, stack_b);
+	if (size <= 3)
+		sort_3(stack_a);
+	else
+		radix_sort(stack_a, stack_b);
 }
