@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/06 15:02:28 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/07 10:22:06 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void				sort_stack_a_bits(t_node **stack_a, t_node **stack_b,
 int					count_bit(int size);
 void				radix_logic(t_node **stack_a, t_node **stack_b);
 void				radix_sort(t_node **stack_a, t_node **stack_b);
+void				execute_sort(t_node **stack_a, t_node **stack_b, int size);
 
 // moves
 void				move_swap(t_node **stack);

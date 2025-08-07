@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/07 10:34:10 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/07 12:59:22 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,23 @@ int	check_arg(const char *str, int argc)
 {
 	int	i;
 
-	i = 0;
 	if (argc <= 1)
 		error_and_exit();
 	if (!str || !*str)
 		return (0);
+	i = 0;
 	if (str[i] == '-' || str[i] == '+')
+	{
+		if (!ft_isdigit(str[i + 1]))
+			return (0);
 		i++;
-	if (!ft_isdigit(str[i]))
-		return (0);
-	while (ft_isdigit(str[i]))
+	}
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
 		i++;
-	if (str[i] != '\0')
-		return (0);
+	}
 	return (1);
 }
 
@@ -64,8 +68,6 @@ void	execute_sort(t_node **stack_a, t_node **stack_b, int size)
 {
 	int	*sorted_stack;
 
-	if (check_sorted(*stack_a))
-		return ;
 	sorted_stack = stack_to_array(stack_a, size);
 	if (!sorted_stack)
 		error_and_exit();
