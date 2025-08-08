@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:12 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/07 16:19:11 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/08 11:18:27 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,69 @@ void	normalize_stack(t_node **stack, int *sorted_array, int size)
 	}
 }
 
-// void	sort_5(t_node **stack_a, t_node **stack_b)
-// {
-// 	int smallesst
-// }
+int	find_smallest(t_node *stack_a)
+{
+	int	smallest_index;
+
+	if (!stack_a)
+		return (0);
+	smallest_index = stack_a->index;
+	while (stack_a)
+	{
+		if (stack_a->index < smallest_index)
+			smallest_index = stack_a->index;
+		stack_a = stack_a->next;
+	}
+	return (smallest_index);
+}
+
+int	find_where_smallest(t_node *stack_a)
+{
+	int	smallest_value;
+	int	smallest_pos;
+	int	current;
+
+	if (!stack_a)
+		return (-1);
+	smallest_value = stack_a->index;
+	smallest_pos = 0;
+	current = 0;
+	while (stack_a)
+	{
+		if (stack_a->index < smallest_value)
+		{
+			smallest_value = stack_a->index;
+			smallest_pos = current;
+		}
+		stack_a = stack_a->next;
+		current++;
+	}
+	return (smallest_pos);
+}
+
+void	sort_5(t_node **stack_a, t_node **stack_b, int size)
+{
+	int	smallest;
+
+	while (size > 3)
+	{
+		smallest = find_where_smallest(*stack_a);
+		if (smallest <= size / 2)
+		{
+			while (smallest > 0)
+				move_ra(stack_a);
+		}
+		else
+		{
+			while (smallest++ < size)
+				move_rra(stack_a);
+		}
+		move_pb(stack_a, stack_b);
+	}
+	sort_3(stack_a);
+	while (*stack_b)
+		move_pa(stack_a, stack_b);
+}
 
 void	sort_3(t_node **stack_a)
 {
@@ -93,30 +152,28 @@ void	sort_3(t_node **stack_a)
 	a = (*stack_a)->index;
 	b = (*stack_a)->next->index;
 	c = (*stack_a)->next->next->index;
-	if (a > b && b < c && a < c)
-		move_sa(stack_a);
-	else if (a < b && b > a && a > c)
-		move_rra(stack_a);
-	else if (a > b && b > c)
+	if (a < b && b > c && a < c)
 	{
 		move_sa(stack_a);
-		move_rra(stack_a);
-	}
-	else if (a < b && b > c && a < c)
-	{
 		move_ra(stack_a);
+	}
+	else if (a > b && b < c && a < c)
+		move_sa(stack_a);
+	else if (a < b && b > c && a > c)
+		move_rra(stack_a);
+	else if (a > b && b > c && a > c)
+	{
 		move_sa(stack_a);
 		move_rra(stack_a);
 	}
 	else if (a > b && b < c && a > c)
 	{
-		move_sa(stack_a);
 		move_ra(stack_a);
 	}
 }
 
 void	sort_2(t_node **stack_a)
 {
-	if ((*stack_a)->value > (*stack_a)->next->value)
+	if ((*stack_a)->index > (*stack_a)->next->index)
 		move_sa(stack_a);
 }
