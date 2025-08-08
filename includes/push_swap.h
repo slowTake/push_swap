@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/08 11:45:20 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/08 12:02:48 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int					is_int_overflow(const char *str);
 void				error_not_number(void);
 void				error_duplicate(void);
 void				error_and_exit(void);
-bool				check_sorted(t_node **stack);
+bool				check_sorted(t_node *stack);
 
 // sort
 void				bubble_sort(int *array, int size);
@@ -58,10 +58,6 @@ int					*stack_to_array(t_node **stack_a, int size);
 void				normalize_stack(t_node **stack, int *sorted_array,
 						int size);
 void				all_to_a(t_node **stack_a, t_node **stack_b);
-void				stack_b_next_bit(t_node **stack_a, t_node **stack_b,
-						int next_bit, int bit_count);
-void				sort_stack_a_bits(t_node **stack_a, t_node **stack_b,
-						int bit);
 int					count_bit(int size);
 void				radix_logic(t_node **stack_a, t_node **stack_b);
 void				radix_sort(t_node **stack_a, t_node **stack_b);
@@ -71,6 +67,10 @@ void				sort_3(t_node **stack_a);
 void				sort_5(t_node **stack_a, t_node **stack_b);
 int					find_where_smallest(t_node *stack_a);
 int					find_smallest(t_node *stack_a);
+
+// radix
+int					ft_max_bit(t_node *stack_a);
+int					find_max_index(t_node *stack_a);
 
 // moves
 void				move_swap(t_node **stack);

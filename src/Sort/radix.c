@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:41 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/07 13:16:02 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/08 12:01:09 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,45 +20,28 @@ void	all_to_a(t_node **stack_a, t_node **stack_b)
 	}
 }
 
-void	stack_b_next_bit(t_node **stack_a, t_node **stack_b, int next_bit,
-		int bit_count)
+int	find_max_index(t_node *stack_a)
 {
-	int	size;
+	int	max_index;
 
-	size = ft_listsize(*stack_b);
-	while (size > 0 && next_bit <= bit_count)
+	max_index = 0;
+	while (stack_a)
 	{
-		if ((((*stack_b)->value >> next_bit) & 1) == 0)
-			move_rb(stack_b);
-		else
-			move_pa(stack_a, stack_b);
-		size--;
+		if (stack_a->index > max_index)
+			max_index = stack_a->index;
+		stack_a = stack_a->next;
 	}
-}
-
-void	sort_stack_a_bits(t_node **stack_a, t_node **stack_b, int bit)
-{
-	int	size;
-
-	size = ft_listsize(*stack_a);
-	while (size > 0)
-	{
-		if ((((*stack_a)->value >> bit) & 1) == 1)
-			move_pb(stack_a, stack_b);
-		else
-			move_ra(stack_a);
-		size--;
-	}
+	return (max_index);
 }
 
 int	ft_max_bit(t_node *stack_a)
 {
 	int	max_bit;
-	int	stack_size;
+	int	max_index;
 
 	max_bit = 0;
-	stack_size = ft_listsize(stack_a);
-	while ((1 << max_bit) < stack_size)
+	max_index = find_max_index(stack_a);
+	while ((max_index >> max_bit) != 0)
 		max_bit++;
 	return (max_bit);
 }
