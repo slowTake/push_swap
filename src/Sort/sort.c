@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:12 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/08 11:18:27 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/08 11:34:11 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,21 +119,21 @@ int	find_where_smallest(t_node *stack_a)
 	return (smallest_pos);
 }
 
-void	sort_5(t_node **stack_a, t_node **stack_b, int size)
+void	sort_5(t_node **stack_a, t_node **stack_b)
 {
 	int	smallest;
 
-	while (size > 3)
+	while (ft_listsize(*stack_a) > 3)
 	{
 		smallest = find_where_smallest(*stack_a);
-		if (smallest <= size / 2)
+		if (smallest <= ft_listsize(*stack_a) / 2)
 		{
-			while (smallest > 0)
+			while (smallest-- > 0)
 				move_ra(stack_a);
 		}
 		else
 		{
-			while (smallest++ < size)
+			while (smallest++ < ft_listsize(*stack_a))
 				move_rra(stack_a);
 		}
 		move_pb(stack_a, stack_b);

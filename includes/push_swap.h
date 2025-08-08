@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/08 10:43:33 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/08 11:34:19 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void				radix_sort(t_node **stack_a, t_node **stack_b);
 void				execute_sort(t_node **stack_a, t_node **stack_b, int size);
 void				sort_2(t_node **stack_a);
 void				sort_3(t_node **stack_a);
-void				sort_5(t_node **stack_a, t_node **stack_b, int size);
+void				sort_5(t_node **stack_a, t_node **stack_b);
 int					find_where_smallest(t_node *stack_a);
 int					find_smallest(t_node *stack_a);
 
