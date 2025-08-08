@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:51:09 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/07 10:20:41 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/08 11:44:33 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,9 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	stack_a = parse_arg(argc, argv);
-	if (!stack_a || ft_listsize(stack_a) <= 1)
-	{
-		ft_clearlist(&stack_a);
-		return (0);
-	}
-	if (check_sorted(stack_a))
-	{
-		ft_clearlist(&stack_a);
-		return (0);
-	}
+	if (!stack_check(&stack_a))
+		error_and_exit();
 	stack_b = NULL;
 	execute_sort(&stack_a, &stack_b, ft_listsize(stack_a));
-	ft_clearlist(&stack_b);
-	ft_clearlist(&stack_a);
 	return (0);
 }

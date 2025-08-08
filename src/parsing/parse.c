@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/08 11:34:13 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/08 11:45:50 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,21 @@ t_node	*parse_arg(int argc, char **argv)
 	return (stack_a);
 }
 
+int	stack_check(t_node **stack_a)
+{
+	if (!stack_a || ft_listsize(*stack_a) <= 1)
+	{
+		ft_clearlist(stack_a);
+		return (0);
+	}
+	if (check_sorted(stack_a))
+	{
+		ft_clearlist(stack_a);
+		return (0);
+	}
+	return (1);
+}
+
 void	execute_sort(t_node **stack_a, t_node **stack_b, int size)
 {
 	int	*sorted_stack;
@@ -82,4 +97,6 @@ void	execute_sort(t_node **stack_a, t_node **stack_b, int size)
 		sort_5(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);
+	ft_clearlist(stack_b);
+	ft_clearlist(stack_a);
 }
