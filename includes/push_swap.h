@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 17:12:29 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/11 17:16:23 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ bool				ft_isvalid(int str);
 int					is_int_overflow(const char *str);
 void				error_duplicate(void);
 void				error_and_exit(void);
-void				error_sorted(void);
 int					check_sorted(t_node **stack);
 
 // sort
