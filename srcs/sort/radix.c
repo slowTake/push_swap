@@ -6,19 +6,11 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:41 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/08 12:08:06 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/11 16:34:22 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	all_to_a(t_node **stack_a, t_node **stack_b)
-{
-	while (ft_listsize(*stack_b) != 0)
-	{
-		move_pa(stack_a, stack_b);
-	}
-}
 
 int	find_max_index(t_node *stack_a)
 {

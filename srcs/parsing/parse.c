@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 10:49:41 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/11 16:44:56 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,23 +69,23 @@ int	stack_check(t_node **stack_a)
 	if (!stack_a || ft_listsize(*stack_a) <= 1)
 	{
 		ft_clearlist(stack_a);
-		return (0);
+		exit(EXIT_FAILURE);
 	}
 	if (check_sorted(*stack_a))
 	{
 		ft_clearlist(stack_a);
-		return (0);
+		exit(EXIT_FAILURE);
 	}
 	return (1);
 }
 
-void	execute_sort(t_node **stack_a, t_node **stack_b, int size)
+int	execute_sort(t_node **stack_a, t_node **stack_b, int size)
 {
 	int	*sorted_stack;
 
 	sorted_stack = stack_to_array(stack_a, size);
 	if (!sorted_stack)
-		error_and_exit();
+		return (0);
 	bubble_sort(sorted_stack, size);
 	normalize_stack(stack_a, sorted_stack, size);
 	free(sorted_stack);
@@ -99,4 +99,5 @@ void	execute_sort(t_node **stack_a, t_node **stack_b, int size)
 		radix_sort(stack_a, stack_b);
 	ft_clearlist(stack_b);
 	ft_clearlist(stack_a);
+	return (1);
 }
