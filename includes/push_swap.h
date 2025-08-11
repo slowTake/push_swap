@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 16:40:41 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/11 17:12:29 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int					ft_parse(char *str);
 t_node				*parse_arg(int argc, char **argv);
 long				ft_atol(const char *str);
 int					check_arg(const char *str, int argc);
-int					stack_check(t_node **stack_a);
 
 // list man
 t_node				*ft_listnew(int value);
@@ -49,8 +48,8 @@ bool				ft_isvalid(int str);
 int					is_int_overflow(const char *str);
 void				error_duplicate(void);
 void				error_and_exit(void);
-int					check_sorted(t_node *stack);
 void				error_sorted(void);
+int					check_sorted(t_node **stack);
 
 // sort
 void				bubble_sort(int *array, int size);

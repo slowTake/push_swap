@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 16:44:56 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/11 17:11:36 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,21 +62,6 @@ t_node	*parse_arg(int argc, char **argv)
 		i++;
 	}
 	return (stack_a);
-}
-
-int	stack_check(t_node **stack_a)
-{
-	if (!stack_a || ft_listsize(*stack_a) <= 1)
-	{
-		ft_clearlist(stack_a);
-		exit(EXIT_FAILURE);
-	}
-	if (check_sorted(*stack_a))
-	{
-		ft_clearlist(stack_a);
-		exit(EXIT_FAILURE);
-	}
-	return (1);
 }
 
 int	execute_sort(t_node **stack_a, t_node **stack_b, int size)

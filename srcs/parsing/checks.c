@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 13:35:34 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 16:20:01 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/11 17:12:34 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,22 @@ int	is_int_overflow(const char *str)
 	return (1);
 }
 
-int	check_sorted(t_node *stack)
+int	check_sorted(t_node **stack)
 {
-	while (stack && stack->next)
+	t_node	*current;
+
+	if (!stack || ft_listsize(*stack) <= 1)
 	{
-		if (stack->value > stack->next->value)
-			return (0);
-		stack = stack->next;
+		ft_clearlist(stack);
+		exit(EXIT_FAILURE);
 	}
-	return (1);
+	current = *stack;
+	while (current && current->next)
+	{
+		if (current->value > current->next->value)
+			return (1);
+		current = current->next;
+	}
+	ft_clearlist(stack);
+	exit(EXIT_FAILURE);
 }
