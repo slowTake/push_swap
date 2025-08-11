@@ -6,67 +6,84 @@
 #    By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/04 12:25:20 by pnurmi            #+#    #+#              #
-#    Updated: 2025/08/04 12:38:46 by pnurmi           ###   ########.fr        #
+#    Updated: 2025/08/11 14:36:15 by pnurmi           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# DONT FORGET TO CHANGE Makefile!
-# DONT FORGET TO CHANGE Makefile!
-# DONT FORGET TO CHANGE Makefile!
-# DONT FORGET TO CHANGE Makefile!
-# DONT FORGET TO CHANGE Makefile!
-# DONT FORGET TO CHANGE Makefile!
+# Project Name
+NAME        := push_swap
 
-# Compiler and flags
-CC		:= cc
-CFLAGS	:= -Wall -Wextra -Werror -g -I includes -I libft
+# Directory Definitions
+SRC_DIR     := srcs
+OBJ_DIR     := objs
+INC_DIR     := includes
 
-# Directories  
-OBJDIR	:= .objs
-LIBDIR	:= libft
+# Source Files: Manually listed with full paths
+SRCS        := $(SRC_DIR)/main/main.c \
+               $(SRC_DIR)/moves/push.c \
+               $(SRC_DIR)/moves/rotate.c \
+               $(SRC_DIR)/moves/rrotate.c \
+               $(SRC_DIR)/moves/swap.c \
+               $(SRC_DIR)/parsing/checks.c \
+               $(SRC_DIR)/parsing/error.c \
+               $(SRC_DIR)/parsing/parse.c \
+               $(SRC_DIR)/sort/radix.c \
+               $(SRC_DIR)/sort/sort.c \
+               $(SRC_DIR)/utility/list_man.c \
+               $(SRC_DIR)/utility/utils.c
 
-# Executable name
-NAME	:= push_swap
+# Header File for Push_Swap
+HEADER      := push_swap.h
 
-# Source files (automatically finds all .c files in src/ and subdirectories)
-SRC		:= $(shell find src -name "*.c")
+# Object Files: Generated from full source paths
+OBJS        := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
-# Object files
-OBJ		:= $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
+# Compiler and Flags
+CC          := cc
+CFLAGS      := -Wall -Wextra -Werror -g
 
-# Libft files (since you're compiling libft sources directly)
-LIBFT_SRC := $(shell find $(LIBDIR) -name "*.c")
-LIBFT_OBJ := $(addprefix $(OBJDIR)/, $(LIBFT_SRC:.c=.o))
+# Remove Command
+RM          := rm -f
 
-# Colors for pretty output
-GREEN	:= \033[0;32m
-CYAN	:= \033[0;36m
-YELLOW	:= \033[1;33m
-RESET	:= \033[0m
+# Libft Integration
+LIBFT_DIR   := ./libft
+LIBFT       := $(LIBFT_DIR)/libft.a
+LIBFT_H     := $(LIBFT_DIR)/libft.h
 
-# Default rule
-.DEFAULT_GOAL := all
+# Include Paths and Libraries
+INC         := -I. -I$(LIBFT_DIR) -I$(INC_DIR)
+LIBS        := -L$(LIBFT_DIR) -lft
 
-# Build rules
-all: $(NAME)
+# -------------------- Main Targets --------------------
 
-$(NAME): $(OBJ) $(LIBFT_OBJ)
-	@$(CC) $(CFLAGS) -o $@ $^
-	@echo "$(CYAN)🚀 Built: $@$(RESET)"
+$(NAME): $(OBJS) $(LIBFT)
+	$(CC) $(CFLAGS) $(INC) $(OBJS) $(LIBS) -o $(NAME)
 
-$(OBJDIR)/%.o: %.c
-	@mkdir -p $(@D)
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "$(GREEN)🛠️  Compiled:$(RESET) $<"
+# Rule to compile individual .c files into .o files.
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
 
-clean:
-	@rm -rf $(OBJDIR)
-	@echo "$(YELLOW)🧹 Cleaned object files.$(RESET)"
+# Rule to build libft.a
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-fclean: clean
-	@rm -f $(NAME)
-	@echo "$(YELLOW)🗑️  Removed binary.$(RESET)"
+# Rule to create the object directory if it doesn't exist
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
-re: fclean all
+# -------------------- Phony Targets --------------------
 
 .PHONY: all clean fclean re
+
+all: $(NAME)
+
+clean:
+	$(RM) -r $(OBJ_DIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
+
+fclean: clean
+	$(RM) $(NAME)
+	$(MAKE) -C $(LIBFT_DIR) fclean
+
+re: fclean all
