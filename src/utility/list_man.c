@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:03:00 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/07 10:53:08 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/11 12:28:06 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,6 @@ int	ft_listsize(t_node *list)
 		list = list->next;
 	}
 	return (count);
-}
-
-void	ft_list_remove(t_node *node)
-{
-	if (node)
-		free(node);
 }
 
 void	ft_clearlist(t_node **list)

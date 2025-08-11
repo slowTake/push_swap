@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:12 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/08 11:34:11 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/11 12:29:16 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,26 +37,6 @@ void	bubble_sort(int *array, int size)
 	}
 }
 
-int	*stack_to_array(t_node **stack_a, int size)
-{
-	int		*array;
-	t_node	*current;
-	int		i;
-
-	i = 0;
-	array = (int *)malloc(sizeof(int) * size);
-	if (!array)
-		return (NULL);
-	current = *stack_a;
-	while (i < size)
-	{
-		array[i] = current->value;
-		current = current->next;
-		i++;
-	}
-	return (array);
-}
-
 void	normalize_stack(t_node **stack, int *sorted_array, int size)
 {
 	t_node	*current;
@@ -77,46 +57,6 @@ void	normalize_stack(t_node **stack, int *sorted_array, int size)
 		}
 		current = current->next;
 	}
-}
-
-int	find_smallest(t_node *stack_a)
-{
-	int	smallest_index;
-
-	if (!stack_a)
-		return (0);
-	smallest_index = stack_a->index;
-	while (stack_a)
-	{
-		if (stack_a->index < smallest_index)
-			smallest_index = stack_a->index;
-		stack_a = stack_a->next;
-	}
-	return (smallest_index);
-}
-
-int	find_where_smallest(t_node *stack_a)
-{
-	int	smallest_value;
-	int	smallest_pos;
-	int	current;
-
-	if (!stack_a)
-		return (-1);
-	smallest_value = stack_a->index;
-	smallest_pos = 0;
-	current = 0;
-	while (stack_a)
-	{
-		if (stack_a->index < smallest_value)
-		{
-			smallest_value = stack_a->index;
-			smallest_pos = current;
-		}
-		stack_a = stack_a->next;
-		current++;
-	}
-	return (smallest_pos);
 }
 
 void	sort_5(t_node **stack_a, t_node **stack_b)
