@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/11 12:33:04 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 12:33:06 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/11 12:36:50 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	move_pa(t_node **stack_a, t_node **stack_b)
 
 void	move_pb(t_node **stack_a, t_node **stack_b)
 {
-	t_node *first_a;
+	t_node	*first_a;
 
 	if (!stack_a || !*stack_a)
 		return ;
