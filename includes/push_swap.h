@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 17:16:23 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/12 10:05:55 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,6 @@ void				normalize_stack(t_node **stack, int *sorted_array,
 						int size);
 void				all_to_a(t_node **stack_a, t_node **stack_b);
 int					count_bit(int size);
-void				radix_logic(t_node **stack_a, t_node **stack_b);
-void				radix_sort(t_node **stack_a, t_node **stack_b);
 int					execute_sort(t_node **stack_a, t_node **stack_b, int size);
 void				sort_2(t_node **stack_a);
 void				sort_3(t_node **stack_a);
@@ -69,6 +67,8 @@ int					find_smallest(t_node *stack_a);
 // radix
 int					ft_max_bit(t_node *stack_a);
 int					find_max_index(t_node *stack_a);
+void				radix_logic(t_node **stack_a, t_node **stack_b);
+void				radix_sort(t_node **stack_a, t_node **stack_b);
 
 // moves
 void				move_swap(t_node **stack);
