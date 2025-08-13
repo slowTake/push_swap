@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 13:35:34 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/13 10:14:07 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 14:40:38 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,6 @@ int	ft_isduplicate(t_node *head, int value)
 		current = current->next;
 	}
 	return (0);
-}
-
-int	is_int_overflow(const char *str)
-{
-	long	val;
-
-	val = ft_atol(str);
-	if (val < INT_MIN || val > INT_MAX)
-	{
-		ft_putstr_fd("ERROR: Int overflow \n", 2);
-		exit(EXIT_FAILURE);
-	}
-	return (1);
 }
 
 int	check_sorted(t_node **stack)

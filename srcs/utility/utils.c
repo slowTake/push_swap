@@ -6,17 +6,17 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:37:51 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/13 13:18:38 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 13:38:59 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atol(const char *str)
+long	ft_atol(const char *str, t_node **stack)
 {
-	long	result;
-	int		sign;
-	int		i;
+	long long	result;
+	int			sign;
+	int			i;
 
 	result = 0;
 	sign = 1;
@@ -33,9 +33,7 @@ long	ft_atol(const char *str)
 	{
 		result = result * 10 + (str[i] - '0');
 		if ((sign * result) < INT_MIN || (sign * result) > INT_MAX)
-		{
-			error_and_exit();
-		}
+			error_overflow(stack);
 		i++;
 	}
 	return (result * sign);

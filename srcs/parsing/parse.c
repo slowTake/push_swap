@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/13 13:15:45 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 14:46:41 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,9 @@ t_node	*parse_arg(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		num = ft_atol(argv[i]);
-		// if (num < INT_MIN || num > INT_MAX)
-		// 	error_and_exit();
+		num = ft_atol(argv[i], &stack_a);
 		if (ft_isduplicate(stack_a, (int)num) == 1)
-			error_duplicate();
+			error_duplicate(&stack_a);
 		new_node = ft_listnew((int)num);
 		if (!new_node)
 		{
