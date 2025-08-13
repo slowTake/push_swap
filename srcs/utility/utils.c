@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:37:51 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/13 13:38:59 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 15:11:37 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,21 +65,21 @@ void	ft_list_remove(t_node *node)
 		free(node);
 }
 
-int	find_smallest(t_node *stack_a)
-{
-	int	smallest_index;
+// int	find_smallest(t_node *stack_a)
+// {
+// 	int	smallest_index;
 
-	if (!stack_a)
-		return (0);
-	smallest_index = stack_a->index;
-	while (stack_a)
-	{
-		if (stack_a->index < smallest_index)
-			smallest_index = stack_a->index;
-		stack_a = stack_a->next;
-	}
-	return (smallest_index);
-}
+// 	if (!stack_a)
+// 		return (0);
+// 	smallest_index = stack_a->index;
+// 	while (stack_a)
+// 	{
+// 		if (stack_a->index < smallest_index)
+// 			smallest_index = stack_a->index;
+// 		stack_a = stack_a->next;
+// 	}
+// 	return (smallest_index);
+// }
 
 int	find_where_smallest(t_node *stack_a)
 {

@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 10:03:00 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 12:28:06 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 15:15:16 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,6 @@ void	ft_listadd_back(t_node **list, t_node *new_node)
 		current = current->next;
 	current->next = new_node;
 	new_node->prev = current;
-}
-
-void	ft_list_front(t_node **list, t_node *new_node)
-{
-	if (!list || !new_node)
-		return ;
-	if (*list)
-		(*list)->prev = new_node;
-	new_node->next = *list;
-	*list = new_node;
 }
 
 int	ft_listsize(t_node *list)
