@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 09:37:51 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 12:29:24 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 13:18:38 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@ long	ft_atol(const char *str)
 	while (ft_isdigit(str[i]) == 1)
 	{
 		result = result * 10 + (str[i] - '0');
+		if ((sign * result) < INT_MIN || (sign * result) > INT_MAX)
+		{
+			error_and_exit();
+		}
 		i++;
 	}
 	return (result * sign);

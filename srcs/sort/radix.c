@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:19:41 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 16:34:22 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 12:48:33 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	radix_logic(t_node **stack_a, t_node **stack_b)
 		i = 0;
 		while (i < size)
 		{
-			if ((((*stack_a)->index >> bit_pos) & 1) == 1)
+			if ((((*stack_a)->index >> bit_pos) & 1) == 0)
 				move_pb(stack_a, stack_b);
 			else
 				move_ra(stack_a);

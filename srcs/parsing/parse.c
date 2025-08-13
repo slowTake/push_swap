@@ -6,12 +6,11 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:50:48 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/13 12:40:50 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 13:15:45 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	check_arg(const char *str, int argc)
 {
@@ -49,8 +48,8 @@ t_node	*parse_arg(int argc, char **argv)
 	while (i < argc)
 	{
 		num = ft_atol(argv[i]);
-		if (num < INT_MIN || num > INT_MAX)
-			error_and_exit();
+		// if (num < INT_MIN || num > INT_MAX)
+		// 	error_and_exit();
 		if (ft_isduplicate(stack_a, (int)num) == 1)
 			error_duplicate();
 		new_node = ft_listnew((int)num);
@@ -75,13 +74,10 @@ int	execute_sort(t_node **stack_a, t_node **stack_b, int size)
 	bubble_sort(sorted_stack, size);
 	normalize_stack(stack_a, sorted_stack, size);
 	free(sorted_stack);
-	while (stack_a)
-	{
-		printf("%d index: %d \n", stack_a->value, *stack_a->index);
-		stack_a = stack_a->next;
-	}
 	if (size == 2)
+	{
 		sort_2(stack_a);
+	}
 	else if (size == 3)
 		sort_3(stack_a);
 	else if (size <= 5)
@@ -89,5 +85,6 @@ int	execute_sort(t_node **stack_a, t_node **stack_b, int size)
 	else
 		radix_sort(stack_a, stack_b);
 	ft_clearlist(stack_b);
+	ft_clearlist(stack_a);
 	return (1);
 }
