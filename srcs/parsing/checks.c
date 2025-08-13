@@ -6,13 +6,13 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 13:35:34 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/11 17:12:34 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 10:14:07 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-bool	ft_isduplicate(t_node *head, int value)
+int	ft_isduplicate(t_node *head, int value)
 {
 	t_node	*current;
 
@@ -20,10 +20,10 @@ bool	ft_isduplicate(t_node *head, int value)
 	while (current)
 	{
 		if (current->value == value)
-			return (true);
+			return (1);
 		current = current->next;
 	}
-	return (false);
+	return (0);
 }
 
 int	is_int_overflow(const char *str)

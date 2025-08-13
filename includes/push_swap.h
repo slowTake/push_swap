@@ -6,7 +6,7 @@
 /*   By: pnurmi <pnurmi@student.hive.fi>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 11:55:52 by pnurmi            #+#    #+#             */
-/*   Updated: 2025/08/12 10:05:55 by pnurmi           ###   ########.fr       */
+/*   Updated: 2025/08/13 10:13:05 by pnurmi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void				ft_list_remove(t_node *node);
 void				ft_clearlist(t_node **list);
 
 // checks & errors
-bool				ft_isduplicate(t_node *head, int value);
+int					ft_isduplicate(t_node *head, int value);
 bool				ft_isvalid(int str);
 int					is_int_overflow(const char *str);
 void				error_duplicate(void);
